@@ -813,7 +813,7 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 42px;
+  padding: 16px;
   border-radius: 8px;
   background:
     linear-gradient(

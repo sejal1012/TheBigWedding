@@ -243,7 +243,6 @@ function App() {
           <a href="#events">Events</a>
           <a href="#story">Story</a>
           <a href="#gallery">Gallery</a>
-          <a href="#experience">Experience</a>
           <a href="#rsvp">RSVP</a>
           <a href="#location">Location</a>
         </nav>
