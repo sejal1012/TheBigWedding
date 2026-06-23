@@ -23,6 +23,8 @@ import sayli01 from "./assets/gallery/sayli-01.jpg";
 import sayli02 from "./assets/gallery/sayli-02.jpg";
 import "./App.css";
 
+const rsvpUrl = "https://sayliandbhaskarwedding.rsvpify.com";
+
 const events = [
   {
     date: "20 Aug",
@@ -243,6 +245,7 @@ function App() {
           <a href="#gallery">Gallery</a>
           <a href="#experience">Experience</a>
           <a href="#rsvp">RSVP</a>
+          <a href="#location">Location</a>
         </nav>
         <div className="hero__content">
           <p className="eyebrow">20-22 August</p>
@@ -442,7 +445,7 @@ function App() {
         </ol>
       </section>
 
-      <section className="details" id="rsvp">
+      <section className="details">
         <div className="details__panel">
           <p className="eyebrow">Dress code</p>
           <h2>Festive Indian, floral, and evening formal.</h2>
@@ -452,17 +455,60 @@ function App() {
             garden venues.
           </p>
         </div>
-        <div className="details__panel details__panel--dark">
+
+        <iframe
+          src="https://docs.google.com/forms/d/e/1FAIpQLSd1Fv40AE3-zchKNV2CHQBMfo6pK0SGAEcm3w6uzzeMt_eBXg/viewform?embedded=true"
+          height="627"
+          frameborder="0"
+          width="100%"
+          marginheight="0"
+          marginwidth="0"
+        >
+          Loading…
+        </iframe>
+      </section>
+      <section className="details" id="rsvp">
+        <div className="details__panel details__panel--dark details__panel--rsvp">
           <p className="eyebrow">RSVP</p>
           <h2>Join us for the wedding weekend.</h2>
           <p>
             Share your attendance for each event, meal preferences, and song
             requests so every moment feels considered.
           </p>
-          <a className="button button--light" href="mailto:rsvp@example.com">
-            RSVP by email
+          <div className="rsvp-embed">
+            <iframe
+              title="Sayli and Bhaskar wedding RSVP"
+              src={rsvpUrl}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
+            />
+          </div>
+          <a
+            className="button button--light"
+            href={rsvpUrl}
+            target="_blank"
+            rel="noreferrer"
+          >
+            Open full RSVP
           </a>
         </div>
+      </section>
+      <section
+        className="details"
+        id="location"
+        style={{ display: "flex", width: "80%", justifyContent: "center" }}
+      >
+        {/* <h2>Location</h2> */}
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12435.537472643906!2d-77.64662380229538!3d38.812202717900774!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89b66613e8cbf987%3A0xf898225f4997dc7c!2sHaymarket%2C%20VA!5e0!3m2!1sen!2sus!4v1782244819848!5m2!1sen!2sus"
+          width="100%"
+          height="450"
+          style={{ border: 0 }}
+          allowFullScreen
+          loading="lazy"
+          referrerPolicy="strict-origin-when-cross-origin"
+        />
       </section>
     </main>
   );
