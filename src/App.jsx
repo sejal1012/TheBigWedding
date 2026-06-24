@@ -22,6 +22,8 @@ import bhaskar03 from "./assets/gallery/bhaskar-03.jpg";
 import sayli01 from "./assets/gallery/sayli-01.jpg";
 import sayli02 from "./assets/gallery/sayli-02.jpg";
 import "./App.css";
+import MusicPlayer from "./MusicPlayer";
+import Countdown from "./CountDown";
 
 const rsvpUrl = "https://sayliandbhaskarwedding.rsvpify.com";
 
@@ -30,7 +32,7 @@ const events = [
     date: "20 Aug",
     theme: "Mehendi",
     time: "4:30 PM onward",
-    place: "Garden Courtyard",
+    place: "Will let you know soon",
     mood: "An intimate evening of henna, family games, folk music, and dinner.",
     accent: "henna",
   },
@@ -38,7 +40,7 @@ const events = [
     date: "21 Aug",
     theme: "Phoolon Ki Haldi",
     time: "11:00 AM onward",
-    place: "Poolside Pavilion",
+    place: "Hay Market, VA",
     mood: "A floral celebration with lunch, playful rituals, dance, and dinner.",
     accent: "haldi",
   },
@@ -46,7 +48,7 @@ const events = [
     date: "22 Aug",
     theme: "Traditional Wedding",
     time: "8:30 AM",
-    place: "Mandap Terrace",
+    place: "Hay Market, VA",
     mood: "Hindu rituals, family blessings, lunch, and quiet ceremonial moments.",
     accent: "wedding",
   },
@@ -54,7 +56,7 @@ const events = [
     date: "22 Aug",
     theme: "Sangeet & Reception",
     time: "7:00 PM onward",
-    place: "Royal Ballroom",
+    place: "Hay Market, VA",
     mood: "Performances, DJ, dinner, reception toasts, and the after party.",
     accent: "sangeet",
   },
@@ -187,6 +189,8 @@ function App() {
     );
   };
 
+  const [startMusic, setStartMusic] = useState(false);
+
   return (
     <main>
       {isInviteOpen && (
@@ -213,7 +217,10 @@ function App() {
             <button
               type="button"
               className="button button--primary"
-              onClick={() => setIsInviteOpen(false)}
+              onClick={() => {
+                setIsInviteOpen(false);
+                setStartMusic(true);
+              }}
             >
               Discover the details
             </button>
@@ -248,7 +255,7 @@ function App() {
         </nav>
         <div className="hero__content">
           <p className="eyebrow">20-22 August</p>
-          <h1>Sayli & Bhaskar</h1>
+          <h1>Bhaskar & Sayli</h1>
           <p className="lede">
             A three-day celebration of color, ritual, music, and family moments,
             imagined with a warmer, more cinematic wedding experience.
@@ -258,7 +265,7 @@ function App() {
               View events
             </a>
             <a className="button button--ghost" href="#rsvp">
-              Save the date
+              I am attending
             </a>
           </div>
         </div>
@@ -431,7 +438,8 @@ function App() {
       <section className="timeline" aria-label="Wedding journey">
         <div className="section-heading">
           <p className="eyebrow">Guest journey</p>
-          <h2>From mehendi laughter to the reception dance floor.</h2>
+          {/* <h2>From mehendi laughter to the reception dance floor.</h2> */}
+          <Countdown />
         </div>
         <ol>
           {events.map((event) => (
@@ -509,6 +517,7 @@ function App() {
           referrerPolicy="strict-origin-when-cross-origin"
         />
       </section>
+      {startMusic && <MusicPlayer autoPlay={startMusic} />}
     </main>
   );
 }
