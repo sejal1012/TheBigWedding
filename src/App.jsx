@@ -29,20 +29,20 @@ const rsvpUrl = "https://sayliandbhaskarwedding.rsvpify.com";
 
 const events = [
   {
-    date: "20 Aug",
-    theme: "Mehendi",
-    time: "4:30 PM onward",
-    place: "Will let you know soon",
-    mood: "An intimate evening of henna, family games, folk music, and dinner.",
-    accent: "henna",
-  },
-  {
     date: "21 Aug",
     theme: "Phoolon Ki Haldi",
     time: "11:00 AM onward",
     place: "Hay Market, VA",
     mood: "A floral celebration with lunch, playful rituals, dance, and dinner.",
     accent: "haldi",
+  },
+  {
+    date: "21 Aug",
+    theme: "Engagement",
+    time: "4:30 PM onward",
+    place: "Hay Market, VA",
+    mood: "An intimate evening of family games, folk music, and dinner.",
+    accent: "henna",
   },
   {
     date: "22 Aug",
@@ -66,6 +66,21 @@ const highlights = [
   "Curated rituals across three days",
   "Floral, candlelit, and palace-inspired styling",
   "Music, games, dance, dinner, and after party",
+];
+
+const contacts = [
+  {
+    label: "Bride's side",
+    name: "Sayli's family",
+    detail: "For ceremony details, guest coordination, and local questions.",
+    contact: "Sejal - 716 446 0604  Chiranjivi - 380 206 9066",
+  },
+  {
+    label: "Groom's side",
+    name: "Bhaskar's family",
+    detail: "For travel questions, venue guidance, and wedding weekend help.",
+    contact: "Praneeth - 845 633 2830",
+  },
 ];
 
 const gallery = [
@@ -169,6 +184,7 @@ const gallery = [
 function App() {
   const [activeSlide, setActiveSlide] = useState(0);
   const [isInviteOpen, setIsInviteOpen] = useState(true);
+  const [isContactOpen, setIsContactOpen] = useState(false);
   const activePhoto = gallery[activeSlide];
 
   useEffect(() => {
@@ -228,6 +244,45 @@ function App() {
         </section>
       )}
 
+      {isContactOpen && (
+        <section className="contact-modal" aria-label="Wedding contacts">
+          <button
+            type="button"
+            className="contact-modal__backdrop"
+            aria-label="Close contacts"
+            onClick={() => setIsContactOpen(false)}
+          />
+          <div
+            className="contact-card"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="contact-title"
+          >
+            <div className="contact-card__heading">
+              <p className="eyebrow">Contacts</p>
+              <h2 id="contact-title">Need help with the wedding weekend?</h2>
+            </div>
+            <div className="contact-list">
+              {contacts.map((contact) => (
+                <article className="contact-item" key={contact.label}>
+                  <span>{contact.label}</span>
+                  <h3>{contact.name}</h3>
+                  <p>{contact.detail}</p>
+                  <strong>{contact.contact}</strong>
+                </article>
+              ))}
+            </div>
+            <button
+              type="button"
+              className="button button--primary"
+              onClick={() => setIsContactOpen(false)}
+            >
+              Close
+            </button>
+          </div>
+        </section>
+      )}
+
       <section
         className="hero"
         id="top"
@@ -252,6 +307,9 @@ function App() {
           <a href="#gallery">Gallery</a>
           <a href="#rsvp">RSVP</a>
           <a href="#location">Location</a>
+          <button type="button" onClick={() => setIsContactOpen(true)}>
+            Contact
+          </button>
         </nav>
         <div className="hero__content">
           <p className="eyebrow">20-22 August</p>
@@ -500,6 +558,14 @@ function App() {
             Open full RSVP
           </a>
         </div>
+      </section>
+      <section
+        className="details"
+        id="location"
+        style={{ display: "flex", width: "80%", justifyContent: "center" }}
+      >
+        {/* <h2>Location</h2> */}
+     <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeL6msaRYVlhInknM4cPOuQZJbfoNF65wKFdL_nl3tiGw94-A/viewform?embedded=true" width="640" height="793" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
       </section>
       <section
         className="details"

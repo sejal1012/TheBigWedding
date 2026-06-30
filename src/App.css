@@ -49,6 +49,87 @@ main {
     0 38px 120px rgba(0, 0, 0, 0.32);
 }
 
+.contact-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.contact-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: rgba(18, 16, 14, 0.72);
+  backdrop-filter: blur(8px);
+  cursor: pointer;
+}
+
+.contact-card {
+  position: relative;
+  width: min(720px, 100%);
+  display: grid;
+  gap: 24px;
+  padding: 34px;
+  border: 1px solid rgba(177, 132, 54, 0.34);
+  border-radius: 8px;
+  color: #3c2a24;
+  background: #fff8ea;
+  box-shadow: 0 34px 110px rgba(0, 0, 0, 0.3);
+}
+
+.contact-card__heading h2 {
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--display);
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  line-height: 0.98;
+}
+
+.contact-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.contact-item {
+  display: grid;
+  gap: 10px;
+  padding: 20px;
+  border: 1px solid rgba(94, 54, 42, 0.16);
+  border-radius: 8px;
+  background: #fffaf0;
+}
+
+.contact-item span {
+  color: #a23b4c;
+  font-size: 0.74rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.contact-item h3 {
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--display);
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.contact-item p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.contact-item strong {
+  color: #22453d;
+  font-size: 0.95rem;
+}
+
 .invite-card::before,
 .invite-card::after {
   content: "";
@@ -196,7 +277,8 @@ main {
   border-radius: 50%;
 }
 
-.nav a {
+.nav a,
+.nav button {
   color: #fffaf1;
   text-decoration: none;
   font-size: 0.78rem;
@@ -207,8 +289,17 @@ main {
   border-radius: 999px;
 }
 
+.nav button {
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  font-family: inherit;
+}
+
 .nav a:hover,
-.nav a:focus-visible {
+.nav a:focus-visible,
+.nav button:hover,
+.nav button:focus-visible {
   background: rgba(255, 250, 241, 0.18);
   outline: none;
 }
@@ -906,9 +997,11 @@ main {
     flex-wrap: wrap;
     justify-content: center;
     border-radius: 18px;
+    top: 12px;
   }
 
-  .nav a {
+  .nav a,
+  .nav button {
     padding: 7px 9px;
     font-size: 0.68rem;
   }
@@ -1033,6 +1126,10 @@ main {
     grid-column: auto;
   }
 
+  .contact-list {
+    grid-template-columns: 1fr;
+  }
+
   .rsvp-embed iframe {
     min-height: 720px;
   }
@@ -1048,6 +1145,10 @@ main {
   .invite-card::before,
   .invite-card::after {
     display: none;
+  }
+
+  .contact-card {
+    padding: 26px;
   }
 
   .rsvp-embed iframe {
@@ -1154,4 +1255,38 @@ main {
   margin-top: 40px;
   color: #666;
   letter-spacing: 1px;
+}
+
+.location-section {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 30px;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.map-frame,
+.form-frame {
+  flex: 1;
+  width: 100%;
+  border: 0;
+  border-radius: 12px;
+}
+
+.map-frame {
+  height: 450px;
+}
+
+.form-frame {
+  height: 793px;
+}
+
+/* Mobile */
+@media (max-width: 760px) {
+  .location-section {
+    flex-direction: column;
+    width: 95%;
+    gap: 20px;
+  }
 }
